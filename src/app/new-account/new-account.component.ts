@@ -14,7 +14,5 @@ export class NewAccountComponent {
       name: accountName,
       status: accountStatus
     });
-    const service = new LoggingService();
-    service.logStatusChange(accountStatus);
   }
 }

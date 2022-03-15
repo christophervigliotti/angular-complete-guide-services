@@ -76,7 +76,7 @@ code
 
 https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656208#overview
 
-Here is the wrong way to do it lol...
+Here is the wrong way to do it (because Angular offers a better way for us to access service objects)
 
 ### logging.service.ts
 
@@ -100,6 +100,7 @@ onCreateAccount(accountName: string, accountStatus: string) {
         name: accountName,
         status: accountStatus
     });
+    // manually generated instance each time this method is called...bogus!
     const service = new LoggingService();
     service.logStatusChange(accountStatus);
 }
@@ -118,6 +119,8 @@ https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/66562
 What Are Services?
 * helper objects / shared objects
 * a central repo / business unit for storing/centralizing code
+
+# etcmethods
 
 ## Up And Running
 
