@@ -54,9 +54,10 @@ code
 
 ## 109. Creating a Data Service
 
-https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656214#overview
+https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656214#overview 
 
-notes
+unfinished...re-watch, delete the extra thing that the video text says to delete
+also take good notes
 
 ```
 code
