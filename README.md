@@ -76,10 +76,33 @@ code
 
 https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656208#overview
 
-notes
+Here is the wrong way to do it lol...
+
+### logging.service.ts
 
 ```
-code
+export class LoggingService {
+    logStatusChange(status: string){
+        console.log('a server status changed, new status is ' + status);
+    }
+}
+```
+
+### new-account.component.ts
+
+implemented the incorrect way...
+
+```
+import { LoggingService } from '../logging.service';
+// and...
+onCreateAccount(accountName: string, accountStatus: string) {
+    this.accountAdded.emit({
+        name: accountName,
+        status: accountStatus
+    });
+    const service = new LoggingService();
+    service.logStatusChange(accountStatus);
+}
 ```
 
 ## 106. Why would you Need Services?
