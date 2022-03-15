@@ -54,7 +54,7 @@ code
 
 ## 109. Creating a Data Service
 
-link
+https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656214#overview
 
 notes
 
@@ -64,12 +64,39 @@ code
 
 ## 108. Injecting the Logging Service into Components
 
-link
+https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656210#overview
 
-notes
+* Hierarchical Injector WAT
+* inject an instance of the class as-needed
+* remember that adding a private argument in your constructor creates a property with the same name
+* in `new-account.component.ts`...
+* `constructor(private loggingService:LoggingService){}` informs Angular that we need an instance of LoggingService
+* don't forget to import it `import { LoggingService } from '../logging.service';`
+* also in the @Component declaration, add (or append) the providers array ala `providers: [LoggingService]`
 
 ```
-code
+import { Component, EventEmitter, Output } from '@angular/core';
+import { LoggingService } from '../logging.service';
+
+@Component({
+  selector: 'app-new-account',
+  templateUrl: './new-account.component.html',
+  styleUrls: ['./new-account.component.css'],
+  providers: [LoggingService]
+})
+export class NewAccountComponent {
+  @Output() accountAdded = new EventEmitter<{name: string, status: string}>();
+
+  constructor(private loggingService:LoggingService){}
+
+  onCreateAccount(accountName: string, accountStatus: string) {
+    this.accountAdded.emit({
+      name: accountName,
+      status: accountStatus
+    });
+    this.loggingService.logStatusChange(accountStatus);
+  }
+}
 ```
 
 ## 107. Creating a Logging Service
