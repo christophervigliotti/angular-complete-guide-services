@@ -34,7 +34,7 @@ code
 
 ## 111. How many Instances of Service Should It Be?
 
-link
+https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656222#questions/3422146
 
 notes
 
@@ -44,13 +44,13 @@ code
 
 ## 110. Understanding the Hierarchical Injector
 
-link
+https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656218#questions/3422146
 
-notes
-
-```
-code
-```
+* this isn't working bc we aren't using services the right way
+* Angular dependency injector is a Heirarchical Injector...if we provide a service it's available for itself and it's child components (they will also receive the same instance of the service)
+* if you inject your service in AppModule, same instance of service is available application-wide
+* if you inject your service in AppComponent...same instance of service available for all components (but not for other services)
+* if you inject your service into any other component, same instance of service available for the component and all of it's child components 
 
 ## 109. Creating a Data Service
 
