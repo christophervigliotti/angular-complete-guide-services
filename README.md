@@ -24,7 +24,7 @@ code
 
 ## 112. Injecting Services into Services
 
-link
+https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656224#questions/3422146
 
 notes
 
@@ -36,11 +36,8 @@ code
 
 https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656222#questions/3422146
 
-notes
-
-```
-code
-```
+* To prevent child classes new-account.component.ts and account-component.ts from overriding the instance of AccountsService that is created in parent class app.component.ts, simply remove it from the providers array of both child classes
+* now we are using the same service everywhere!
 
 ## 110. Understanding the Hierarchical Injector
 
