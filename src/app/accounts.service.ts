@@ -12,12 +12,13 @@ export class AccountsService {
           name: 'Hidden Account',
           status: 'unknown'
         }
-      ];
-    
+      ];    
     addAccount(name: string, status: string){
+        console.log('acounts.service > addAccount');
         this.accounts.push({name: name, status: status})
     }
     updateStatus(id: number, status: string){
-        this.accounts[id].status = status;        
+      console.log('aacounts.service > updateStatus');
+      this.accounts[id].status = status;        
     }
 }

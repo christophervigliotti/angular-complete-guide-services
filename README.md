@@ -56,11 +56,51 @@ code
 
 https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656214#overview 
 
-unfinished...re-watch, delete the extra thing that the video text says to delete
-also take good notes
+
+Added file accounts.service.ts
+```
+export class AccountsService {
+    accounts = [
+        {
+          name: 'Master Account',
+          status: 'active'
+        },
+        {
+          name: 'Testaccount',
+          status: 'inactive'
+        },
+        {
+          name: 'Hidden Account',
+          status: 'unknown'
+        }
+      ];    
+    addAccount(name: string, status: string){
+        this.accounts.push({name: name, status: status})
+    }
+    updateStatus(id: number, status: string){
+        this.accounts[id].status = status;        
+    }
+}
+```
+* in app.component.html, removed `(accountAdded)="onAccountAdded($event)"` from `<app-new-account` and `(statusChanged)="onStatusChanged($event)"` from `<app-account`
+
+* in new-account.component.ts, inject the service via the constructor (also adding the cooresponding provider and import), also added/modified method `onCreateAccount`...
 
 ```
-code
+onCreateAccount(accountName: string, accountStatus: string) {
+  this.accountsService.addAccount(accountName, accountStatus);
+  this.loggingService.logStatusChange(accountStatus);
+}
+```
+
+* in account.component.ts, inject the service via the constructor (also adding the cooresponding provider and import), also added/modified method 'onSetTo'
+
+```
+onSetTo(status: string) {
+  console.log('account.component > onSetTo');
+  this.accountsService.updateStatus(this.id, status);
+  this.loggingService.logStatusChange(status);
+}
 ```
 
 ## 108. Injecting the Logging Service into Components
