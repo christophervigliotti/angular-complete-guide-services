@@ -14,7 +14,7 @@ code
 
 ## 113. Using Services for Cross-Component Communication
 
-link
+https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656226#questions/3422146 
 
 notes
 
@@ -24,15 +24,49 @@ code
 
 ## 112. Injecting Services into Services
 
-https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656224#questions/3422146
+https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656224#questions/3422146 
 
-notes
+* moved the service from app.component to app.module.  this was done by importing it `import { AccountsService } from './accounts.service';` and adding `AccountsService` to the providers array
+* add the @Injectable metadata to a service that you want to inject other services. this was done for AccountsService...
+* ...however in newer versions of angular it is recommended that you add @Injectable 
 
+accounts.service.ts...
 ```
-code
+import { Injectable } from "@angular/core"; <<< import it
+import { LoggingService } from "./logging.service"; <<< import it
+
+@Injectable() <<< mark this service as injectable
+
+export class AccountsService {
+  accounts = [
+      {
+        name: 'Master Account',
+        status: 'active'
+      },
+      {
+        name: 'Testaccount',
+        status: 'inactive'
+      },
+      {
+        name: 'Hidden Account',
+        status: 'unknown'
+      }
+    ];    
+
+  constructor(private loggingService: LoggingService){} <<< pass it into the constructor as a property (private keyword)
+ 
+  addAccount(name: string, status: string){
+    this.accounts.push({name: name, status: status})
+    this.loggingService.logStatusChange(status); <<< call the loggingService here
+  }
+  updateStatus(id: number, status: string){
+    this.accounts[id].status = status;        
+    this.loggingService.logStatusChange(status); <<< call the loggingService here
+  }
+}
 ```
 
-## 111. How many Instances of Service Should It Be?
+## 111. How many Instances of Service Should It Be? (Grammar Fail!)
 
 https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656222#questions/3422146
 
@@ -52,7 +86,6 @@ https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/66562
 ## 109. Creating a Data Service
 
 https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656214#overview 
-
 
 Added file accounts.service.ts
 ```
