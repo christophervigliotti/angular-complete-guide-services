@@ -4,13 +4,29 @@ This is one of several repos that I created for the course "Angular - The Comple
 
 ## 114. Services in Angular 6+
 
-link
+https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/5401644#questions
 
-notes
+If you're using Angular 6+ (check your `package.json` to find out or `ng -v`), you can provide application-wide services in a different way.  Instead of adding a service class to the `providers[]`  array in `AppModule`, you can set the following config in `@Injectable()`:
 
 ```
-code
+@Injectable({providedIn: 'root'})
+export class MyService { ... }
 ```
+This is exactly the same as:
+```
+export class MyService { ... }
+```
+and
+```
+import { MyService } from './path/to/my.service';
+ 
+@NgModule({
+    ...
+    providers: [MyService]
+})
+export class AppModule { ... }
+```
+Using this new syntax is completely optional, the traditional syntax (using `providers[]` ) will still work. The "new syntax" does offer one advantage though: Services can be loaded lazily by Angular (behind the scenes) and redundant code can be removed automatically. This can lead to a better performance and loading speed - though this really only kicks in for bigger services and apps in general.
 
 ## 113. Using Services for Cross-Component Communication
 
