@@ -16,10 +16,14 @@ code
 
 https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656226#questions/3422146 
 
-notes
-
+* a bit of code cleanup
+* define the event emitter...in accounts.service.ts `statusUpdated = new EventEmitter<string>();`
+* emit an event...fires when an 'active', 'inactive' or 'unknown' button is clicked...in account.component.ts added `this.accountsService.statusUpdated.emit(status);` to method `onSetTo()`
+* subscribe to the event...throw an alert when the status changes...in new-account.component.ts, added to constructor...
 ```
-code
+this.accountsService.statusUpdated.subscribe(
+  (status: string) => alert('new-account > constructor > subscribe, status: ' + status)
+);
 ```
 
 ## 112. Injecting Services into Services
